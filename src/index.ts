@@ -11,7 +11,9 @@ app.get("/", (c) => {
 app.post("/query", async (c) => {
   const body = await c.req.json()
   console.log(body)
-  const ret = await query(body as RequestParams)
+  const ret = await query(body as RequestParams, {
+    proxyEndpoint: "https://ideepl.vercel.app/jsonrpc",
+  })
   return c.json(ret)
 })
 
